@@ -8,7 +8,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
-import javax.xml.ws.BindingType;
 
 @Path("/hello")
 public class SayHello {
@@ -49,6 +48,18 @@ public class SayHello {
 		String res = "First Name : " + student.getName() + "   Age : " + student.getAge();
 
 		return Response.status(200).entity(res).build();
+	}
+	
+	@Path("/postA")
+	@POST
+	@Produces("application/json")
+	public Response postA(Student student) {
+
+		Student st = new Student();
+		st.setAge(21);
+		st.setName("Giga");
+
+		return Response.status(200).entity(st).build();
 	}
 	
 }
